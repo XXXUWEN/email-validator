@@ -5,6 +5,8 @@ public class emailValidator {
 	}
 	public int checkInpt(String emailAddress){
 		int j=0,k=0;
+		//for indicate space
+		int l = 0;
 		int result = 0;
 		for(int i = 0;i < emailAddress.length();i++){
 			if(emailAddress.charAt(i)=='@'){
@@ -12,6 +14,10 @@ public class emailValidator {
 			}
 			if(emailAddress.charAt(i)=='.'){
 				k++;
+			}
+			//calculate number of space 
+			if(emailAddress.charAt(i)==' '){
+				l++;
 			}
 		}
 		if(j>1&&k==0){
@@ -32,7 +38,20 @@ public class emailValidator {
 		if(j==0&&k>0){
 			return 1;
 		}
+		//check if there exist space in emailAddress
+		if(l>0){
+			return 0;
+		}
 		return result;
+	}
+	
+	//check domain name
+	public int testDomain(String emailAddress){
+		int domainResult = 0;
+		if(emailAddress.matches("^.*[.][c][o][m]*$")){
+			domainResult = 1;
+		}
+		return domainResult;
 	}
 	
 }

@@ -36,4 +36,19 @@ public class emailValidatorTest {
 		String email = "asdasd@@@@@@@qwecom";
 		assertEquals(0,test.checkInpt(email));
 	}
+	@Test
+	public void testEmailspace() {
+		String email = "asdasd qwecom";
+		assertEquals(0,test.checkInpt(email));
+	}
+	@Test
+	public void testEmaildomain() {
+		String email = "vbmnbomcom.";
+		assertEquals(0,test.testDomain(email));
+	}
+	@Test
+	public void testEmaildomain2() {
+		String email = "vbmnbwer.com";
+		assertEquals(1,test.testDomain(email));
+	}
 }
